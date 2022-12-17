@@ -1,27 +1,35 @@
-﻿Imports DevExpress.Mvvm
-Imports DevExpress.Mvvm.POCO
+Imports DevExpress.Mvvm
 Imports DevExpress.Mvvm.DataAnnotations
 Imports System
 Imports System.Windows.Shell
 
 Namespace DXSampleTaskbarButtonService.ViewModel
-    <POCOViewModel> _
-    Public Class MainViewModel
-        Private Property ThumbnailClipMargin() As Integer
-        Public Overridable Property Description() As String
-        Public Overridable Property ProgressValue() As Double
-        <BindableProperty(OnPropertyChangedMethodName := "UpdateProgressState")> _
-        Public Overridable Property IsNormalProgressState() As Boolean
-        <BindableProperty(OnPropertyChangedMethodName := "UpdateProgressState")> _
-        Public Overridable Property IsPausedProgressState() As Boolean
-        <BindableProperty(OnPropertyChangedMethodName := "UpdateProgressState")> _
-        Public Overridable Property IsErrorProgressState() As Boolean
-        <BindableProperty(OnPropertyChangedMethodName := "UpdateProgressState")> _
-        Public Overridable Property IsIndetermintateProgressState() As Boolean
-        <BindableProperty(OnPropertyChangedMethodName := "UpdateProgressState")> _
-        Public Overridable Property IsNoneProgressState() As Boolean
 
-        Protected Overridable ReadOnly Property TaskbarButtonService() As ITaskbarButtonService
+    <POCOViewModel>
+    Public Class MainViewModel
+
+        Private Property ThumbnailClipMargin As Integer
+
+        Public Overridable Property Description As String
+
+        Public Overridable Property ProgressValue As Double
+
+        <BindableProperty(OnPropertyChangedMethodName:="UpdateProgressState")>
+        Public Overridable Property IsNormalProgressState As Boolean
+
+        <BindableProperty(OnPropertyChangedMethodName:="UpdateProgressState")>
+        Public Overridable Property IsPausedProgressState As Boolean
+
+        <BindableProperty(OnPropertyChangedMethodName:="UpdateProgressState")>
+        Public Overridable Property IsErrorProgressState As Boolean
+
+        <BindableProperty(OnPropertyChangedMethodName:="UpdateProgressState")>
+        Public Overridable Property IsIndetermintateProgressState As Boolean
+
+        <BindableProperty(OnPropertyChangedMethodName:="UpdateProgressState")>
+        Public Overridable Property IsNoneProgressState As Boolean
+
+        Protected Overridable ReadOnly Property TaskbarButtonService As ITaskbarButtonService
             Get
                 Return Nothing
             End Get
@@ -33,10 +41,9 @@ Namespace DXSampleTaskbarButtonService.ViewModel
             IsNormalProgressState = True
             ThumbnailClipMargin = 0
         End Sub
+
         Protected Sub UpdateProgressState()
-            If TaskbarButtonService Is Nothing Then
-                Return
-            End If
+            If TaskbarButtonService Is Nothing Then Return
             If IsNormalProgressState Then
                 TaskbarButtonService.ProgressState = TaskbarItemProgressState.Normal
             ElseIf IsPausedProgressState Then

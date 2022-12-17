@@ -1,9 +1,10 @@
-﻿Namespace DXSampleTaskbarButtonService
-    Partial Public Class MainWindow
+Namespace DXSampleTaskbarButtonService
+
+    Public Partial Class MainWindow
         Inherits DevExpress.Xpf.Core.DXWindow
 
         Public Sub New()
-            InitializeComponent()
+            Me.InitializeComponent()
         End Sub
     End Class
 End Namespace
